@@ -1,7 +1,7 @@
-import { ObservableStore } from './ObservableStore';
+import { SharedStore } from './SharedStore';
 import type { TypedKey } from './types';
 
-export class PersistedStore extends ObservableStore {
+export class PersistedStore extends SharedStore {
     private readonly storage: Storage;
     private readonly storageKey: string;
 

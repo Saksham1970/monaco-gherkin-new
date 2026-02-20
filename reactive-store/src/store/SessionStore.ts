@@ -1,7 +1,7 @@
 import { PersistedStore } from './PersistedStore';
 
-export class LocalStorageStore extends PersistedStore {
+export class SessionStore extends PersistedStore {
     constructor(storageKey: string) {
-        super(storageKey, localStorage);
+        super(storageKey, sessionStorage);
     }
 }

@@ -1,10 +1,9 @@
 import { Settings } from 'lucide-react';
 import { useState } from 'react';
 
+import { SettingsDialog } from '@/components/settings';
+import { SidebarItem } from '@/components/sidebarItem';
 import { useTheme } from '@/hooks';
-
-import { SettingsPage } from './SettingsPage';
-import { SidebarItem } from './SidebarItem';
 
 export function Container() {
     useTheme();
@@ -14,14 +13,14 @@ export function Container() {
     return (
         <>
             <div className="flex h-full w-full bg-background">
-                <div className="flex flex-col h-full w-16 bg-card border-r border-border">
-                    <div className="flex-1"></div>
-                    <SidebarItem icon={Settings} onClick={() => setSettingsOpen(true)} />
+                <div className="flex flex-col h-full w-16 bg-card">
+                    <div className="flex-1" />
+                    <SidebarItem Icon={Settings} label="Open Settings" onClick={() => setSettingsOpen(true)} />
                 </div>
-                <div className="flex-1"></div>
+                <div className="flex-1" />
             </div>
 
-            <SettingsPage isOpen={isSettingsOpen} onClose={() => setSettingsOpen(false)} />
+            <SettingsDialog isOpen={isSettingsOpen} onClose={() => setSettingsOpen(false)} />
         </>
     );
 }

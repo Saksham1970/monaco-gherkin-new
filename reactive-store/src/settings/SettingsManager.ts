@@ -5,7 +5,7 @@ import type { Optional, Unsubscribe } from '@/types';
 import type { RegisteredSetting, RegistryChangeHandler, Setting } from './types';
 
 export class SettingsManager {
-    private settings: Setting<unknown>[] = [];
+    private registeredSettings: Setting<unknown>[] = [];
     private registryHandlers = new Set<RegistryChangeHandler>();
     private store: Store;
 
@@ -14,19 +14,15 @@ export class SettingsManager {
     }
 
     public registerSetting<T>(setting: Setting<T>): void {
-        if (this.settings.some((s) => s.storeKey === setting.storeKey)) {
-            return;
-        }
+        if (this.isAlreadyRegistered(setting)) return;
 
-        this.settings.push(setting);
-        if (!this.store.has(setting.storeKey)) {
-            this.store.set(setting.storeKey, setting.defaultValue);
-        }
+        this.registeredSettings.push(setting);
+        this.seedDefaultValue(setting);
         this.notifyRegistryHandlers();
     }
 
     public get<T>(setting: Setting<T>): Optional<T> {
-        if (this.settings.includes(setting)) {
+        if (this.registeredSettings.includes(setting)) {
             return this.store.get(setting.storeKey);
         }
         return undefined;
@@ -38,7 +34,7 @@ export class SettingsManager {
     }
 
     public getSettingsRegistry(): readonly RegisteredSetting[] {
-        return this.settings.map((setting) => ({
+        return this.registeredSettings.map((setting) => ({
             setting: setting,
             value: this.get(setting),
         }));
@@ -54,6 +50,16 @@ export class SettingsManager {
         return () => {
             this.registryHandlers.delete(handler);
         };
+    }
+
+    private isAlreadyRegistered<T>(setting: Setting<T>): boolean {
+        return this.registeredSettings.some((s) => s.storeKey === setting.storeKey);
+    }
+
+    private seedDefaultValue<T>(setting: Setting<T>): void {
+        if (!this.store.has(setting.storeKey)) {
+            this.store.set(setting.storeKey, setting.defaultValue);
+        }
     }
 
     private notifyRegistryHandlers(): void {

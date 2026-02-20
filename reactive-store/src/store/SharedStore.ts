@@ -3,14 +3,12 @@ import type { Unsubscribe } from '@/types';
 import type { Store } from './Store';
 import type { StoreKey, TypedKey, ValueChangeHandler } from './types';
 
-export class ObservableStore implements Store {
+export class SharedStore implements Store {
     protected values = new Map<StoreKey, unknown>();
     protected handlers = new Map<StoreKey, Set<ValueChangeHandler<unknown>>>();
 
     public set<T>(key: TypedKey<T>, value: T): void {
-        const current = this.get(key);
-
-        if (current !== undefined && JSON.stringify(current) === JSON.stringify(value)) return;
+        if (this.isUnchanged(key, value)) return;
 
         this.values.set(key, value);
         this.notifyHandlers(key, value);
@@ -50,5 +48,10 @@ export class ObservableStore implements Store {
         if (handlers) {
             handlers.forEach((handler) => handler(value));
         }
+    }
+
+    private isUnchanged<T>(key: TypedKey<T>, next: T): boolean {
+        const current = this.get(key);
+        return current !== undefined && JSON.stringify(current) === JSON.stringify(next);
     }
 }
