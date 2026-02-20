@@ -1,0 +1,313 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    /* Main application background color */
+    --color-background: var(--background);
+
+    /* Default text color (highest contrast) */
+    --color-foreground: var(--foreground);
+
+    /* Background color for elevated surfaces (panels, sidebars, modals, cards) */
+    --color-card: var(--card);
+
+    /* Prominent brand color for main actions (active buttons, selected states, highlights) */
+    --color-primary: var(--primary);
+
+    /* Subdued background color for less important elements or hover states */
+    --color-secondary: var(--secondary);
+
+    /* Faded text color for secondary information, subtitles, and input placeholders */
+    --color-muted-foreground: var(--muted-foreground);
+
+    /* Color for structural lines, dividers, and borders between layout sections */
+    --color-border: var(--border);
+
+    /* Specific border or background color applied to form inputs (boxes, dropdowns) */
+    --color-input: var(--input);
+
+    /* Glow/outline color when an input or button is focused (e.g., navigating via keyboard) */
+    --color-ring: var(--ring);
+}
+
+@layer base {
+    :root,
+    [data-theme='nord'] {
+        --background: #eceff4;
+        --foreground: #2e3440;
+        --card: #e5e9f0;
+        --primary: #5e81ac;
+        --secondary: #d8dee9;
+        --muted-foreground: #4c566a;
+        --border: #d8dee9;
+        --input: #e5e9f0;
+        --ring: #5e81ac;
+    }
+
+    .dark[data-theme='nord'],
+    [data-theme='nord'] .dark {
+        --background: #2e3440;
+        --foreground: #d8dee9;
+        --card: #3b4252;
+        --primary: #88c0d0;
+        --secondary: #434c5e;
+        --muted-foreground: #4c566a;
+        --border: #434c5e;
+        --input: #3b4252;
+        --ring: #81a1c1;
+    }
+
+    [data-theme='solarized'] {
+        --background: #fdf6e3;
+        --foreground: #657b83;
+        --card: #eee8d5;
+        --primary: #2aa198;
+        --secondary: #93a1a1;
+        --muted-foreground: #93a1a1;
+        --border: #eee8d5;
+        --input: #eee8d5;
+        --ring: #cb4b16;
+    }
+
+    .dark[data-theme='solarized'],
+    [data-theme='solarized'] .dark {
+        --background: #002b36;
+        --foreground: #839496;
+        --card: #073642;
+        --primary: #2aa198;
+        --secondary: #586e75;
+        --muted-foreground: #586e75;
+        --border: #073642;
+        --input: #073642;
+        --ring: #b58900;
+    }
+
+    [data-theme='catppuccin'] {
+        --background: #eff1f5;
+        --foreground: #4c4f69;
+        --card: #e6e9ef;
+        --primary: #8839ef;
+        --secondary: #bcc0cc;
+        --muted-foreground: #8c8fa1;
+        --border: #bcc0cc;
+        --input: #e6e9ef;
+        --ring: #1e66f5;
+    }
+
+    .dark[data-theme='catppuccin'],
+    [data-theme='catppuccin'] .dark {
+        --background: #1e1e2e;
+        --foreground: #cdd6f4;
+        --card: #181825;
+        --primary: #cba6f7;
+        --secondary: #313244;
+        --muted-foreground: #a6adc8;
+        --border: #313244;
+        --input: #181825;
+        --ring: #89b4fa;
+    }
+
+    [data-theme='gruvbox'] {
+        --background: #fbf1c7;
+        --foreground: #3c3836;
+        --card: #ebdbb2;
+        --primary: #d65d0e;
+        --secondary: #d5c4a1;
+        --muted-foreground: #7c6f64;
+        --border: #d5c4a1;
+        --input: #ebdbb2;
+        --ring: #b57614;
+    }
+
+    .dark[data-theme='gruvbox'],
+    [data-theme='gruvbox'] .dark {
+        --background: #282828;
+        --foreground: #ebdbb2;
+        --card: #3c3836;
+        --primary: #fe8019;
+        --secondary: #504945;
+        --muted-foreground: #a89984;
+        --border: #504945;
+        --input: #3c3836;
+        --ring: #fabd2f;
+    }
+
+    [data-theme='tokyo-night'] {
+        --background: #d5d6db;
+        --foreground: #343b58;
+        --card: #cbccd1;
+        --primary: #33467c;
+        --secondary: #a8aecb;
+        --muted-foreground: #8c92a6;
+        --border: #a8aecb;
+        --input: #cbccd1;
+        --ring: #5a4a78;
+    }
+
+    .dark[data-theme='tokyo-night'],
+    [data-theme='tokyo-night'] .dark {
+        --background: #1a1b26;
+        --foreground: #c0caf5;
+        --card: #24283b;
+        --primary: #7aa2f7;
+        --secondary: #414868;
+        --muted-foreground: #565f89;
+        --border: #414868;
+        --input: #24283b;
+        --ring: #bb9af7;
+    }
+
+    [data-theme='github'] {
+        --background: #ffffff;
+        --foreground: #24292f;
+        --card: #f6f8fa;
+        --primary: #0969da;
+        --secondary: #eaeef2;
+        --muted-foreground: #57606a;
+        --border: #d0d7de;
+        --input: #ffffff;
+        --ring: #0969da;
+    }
+
+    .dark[data-theme='github'],
+    [data-theme='github'] .dark {
+        --background: #0d1117;
+        --foreground: #c9d1d9;
+        --card: #161b22;
+        --primary: #58a6ff;
+        --secondary: #21262d;
+        --muted-foreground: #8b949e;
+        --border: #30363d;
+        --input: #0d1117;
+        --ring: #1f6feb;
+    }
+
+    [data-theme='material'] {
+        --background: #ffffff;
+        --foreground: #000000;
+        --card: #f5f5f5;
+        --primary: #6200ee;
+        --secondary: #e0e0e0;
+        --muted-foreground: #757575;
+        --border: #e0e0e0;
+        --input: #f5f5f5;
+        --ring: #03dac6;
+    }
+
+    .dark[data-theme='material'],
+    [data-theme='material'] .dark {
+        --background: #121212;
+        --foreground: #ffffff;
+        --card: #1e1e1e;
+        --primary: #bb86fc;
+        --secondary: #2c2c2c;
+        --muted-foreground: #a0a0a0;
+        --border: #333333;
+        --input: #1e1e1e;
+        --ring: #03dac6;
+    }
+
+    [data-theme='one'] {
+        --background: #fafafa;
+        --foreground: #383a42;
+        --card: #f0f0f0;
+        --primary: #4078c0;
+        --secondary: #e5e5e6;
+        --muted-foreground: #a0a1a7;
+        --border: #e5e5e6;
+        --input: #f0f0f0;
+        --ring: #a626a4;
+    }
+
+    .dark[data-theme='one'],
+    [data-theme='one'] .dark {
+        --background: #282c34;
+        --foreground: #abb2bf;
+        --card: #21252b;
+        --primary: #61afef;
+        --secondary: #3e4451;
+        --muted-foreground: #5c6370;
+        --border: #3e4451;
+        --input: #21252b;
+        --ring: #c678dd;
+    }
+
+    [data-theme='rose-pine'] {
+        --background: #faf4ed;
+        --foreground: #575279;
+        --card: #fffaf3;
+        --primary: #907aa9;
+        --secondary: #dfdad9;
+        --muted-foreground: #9893a5;
+        --border: #dfdad9;
+        --input: #fffaf3;
+        --ring: #ea9a97;
+    }
+
+    .dark[data-theme='rose-pine'],
+    [data-theme='rose-pine'] .dark {
+        --background: #191724;
+        --foreground: #e0def4;
+        --card: #1f1d2e;
+        --primary: #c4a7e7;
+        --secondary: #26233a;
+        --muted-foreground: #908caa;
+        --border: #26233a;
+        --input: #1f1d2e;
+        --ring: #f6c177;
+    }
+
+    [data-theme='everforest'] {
+        --background: #fdf6e3;
+        --foreground: #5c6a72;
+        --card: #f4f0d9;
+        --primary: #8da101;
+        --secondary: #e6e2cc;
+        --muted-foreground: #939f91;
+        --border: #e6e2cc;
+        --input: #f4f0d9;
+        --ring: #dfa000;
+    }
+
+    .dark[data-theme='everforest'],
+    [data-theme='everforest'] .dark {
+        --background: #2b3339;
+        --foreground: #d3c6aa;
+        --card: #323c41;
+        --primary: #a7c080;
+        --secondary: #3a454a;
+        --muted-foreground: #859289;
+        --border: #3a454a;
+        --input: #323c41;
+        --ring: #dbbc7f;
+    }
+
+    [data-theme='dracula'],
+    .dark[data-theme='dracula'],
+    [data-theme='dracula'] .dark {
+        --background: #282a36;
+        --foreground: #f8f8f2;
+        --card: #44475a;
+        --primary: #ff79c6;
+        --secondary: #44475a;
+        --muted-foreground: #6272a4;
+        --border: #6272a4;
+        --input: #44475a;
+        --ring: #bd93f9;
+    }
+
+    [data-theme='monokai'],
+    .dark[data-theme='monokai'],
+    [data-theme='monokai'] .dark {
+        --background: #272822;
+        --foreground: #f8f8f2;
+        --card: #3e3d32;
+        --primary: #f92672;
+        --secondary: #3e3d32;
+        --muted-foreground: #75715e;
+        --border: #75715e;
+        --input: #3e3d32;
+        --ring: #a6e22e;
+    }
+}
