@@ -1,5 +1,7 @@
 import { type RegisteredSetting } from 'reactive-store';
 
+import { useContainerContext } from '@/context';
+
 import { renderSettingControl } from './controls';
 
 export interface SettingsContentProps {
@@ -9,6 +11,8 @@ export interface SettingsContentProps {
 }
 
 export function SettingsContent({ section, settings, onClose }: SettingsContentProps) {
+    const { settingsManager } = useContainerContext();
+
     return (
         <div className="flex-1 overflow-y-auto p-8">
             <div className="flex items-center justify-between mb-6">
@@ -23,7 +27,7 @@ export function SettingsContent({ section, settings, onClose }: SettingsContentP
             </div>
             <div className="flex flex-col gap-6">
                 {settings.map((entry) => {
-                    return renderSettingControl(entry, entry.setting.disabled?.());
+                    return renderSettingControl(entry, entry.setting.disabled?.(settingsManager));
                 })}
                 {settings.length === 0 && (
                     <p className="text-muted-foreground">No settings available in this section.</p>

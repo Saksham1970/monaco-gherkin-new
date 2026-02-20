@@ -1,6 +1,5 @@
 import { getOptions, MODES, type Setting } from 'reactive-store';
 
-import { themeManager } from './themeManagers';
 import { THEME_METADATA, type ThemePalette, THEMES } from './themes';
 
 export const THEME_KEY = 'container.theme';
@@ -19,5 +18,8 @@ export const DARK_MODE_SETTING: Setting<boolean> = {
     defaultValue: window.matchMedia('(prefers-color-scheme: dark)').matches,
     label: 'Dark Mode',
     section: 'Appearance',
-    disabled: () => THEME_METADATA[themeManager.getTheme()].forceDarkMode !== MODES.BOTH,
+    disabled: (manager) => {
+        const theme = manager.get(THEME_SETTING) ?? THEME_SETTING.defaultValue;
+        return THEME_METADATA[theme].forceDarkMode !== MODES.BOTH;
+    },
 };
