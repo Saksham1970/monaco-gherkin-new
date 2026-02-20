@@ -1,14 +1,8 @@
-import type { Setting } from 'reactive-store';
-
 import { useSetting } from '@/hooks';
 
-interface ToggleControlProps {
-    setting: Setting<boolean>;
-    label: string;
-    disabled?: boolean;
-}
+import type { BaseControlProps } from '.';
 
-export function ToggleControl({ setting, label, disabled }: ToggleControlProps) {
+export const ToggleControl = ({ setting, label, disabled }: BaseControlProps<boolean>) => {
     const [value, setValue] = useSetting(setting);
     const inputId = `toggle-${setting.storeKey}`;
     return (
@@ -26,4 +20,4 @@ export function ToggleControl({ setting, label, disabled }: ToggleControlProps) 
             />
         </div>
     );
-}
+};

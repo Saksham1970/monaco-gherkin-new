@@ -6,7 +6,7 @@ export interface SidebarItemProps {
     onClick: () => void;
 }
 
-export function SidebarItem({ Icon, label, onClick }: SidebarItemProps) {
+export const SidebarItem = ({ Icon, label, onClick }: SidebarItemProps) => {
     return (
         <div className="flex aspect-square items-center justify-center">
             <button
@@ -18,4 +18,4 @@ export function SidebarItem({ Icon, label, onClick }: SidebarItemProps) {
             </button>
         </div>
     );
-}
+};

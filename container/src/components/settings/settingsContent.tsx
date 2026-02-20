@@ -10,7 +10,7 @@ export interface SettingsContentProps {
     onClose: () => void;
 }
 
-export function SettingsContent({ section, settings, onClose }: SettingsContentProps) {
+export const SettingsContent = ({ section, settings, onClose }: SettingsContentProps) => {
     const { settingsManager } = useContainerContext();
 
     return (
@@ -35,4 +35,4 @@ export function SettingsContent({ section, settings, onClose }: SettingsContentP
             </div>
         </div>
     );
-}
+};

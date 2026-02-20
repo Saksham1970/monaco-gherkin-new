@@ -4,7 +4,7 @@ export interface SettingsSidebarProps {
     onSelect: (section: string) => void;
 }
 
-export function SettingsSidebar({ sections, activeSection, onSelect }: SettingsSidebarProps) {
+export const SettingsSidebar = ({ sections, activeSection, onSelect }: SettingsSidebarProps) => {
     return (
         <nav className="w-64 shrink-0 bg-card p-4" aria-label="Settings sections">
             <h2 className="mb-4 text-xs font-bold uppercase tracking-wider text-muted-foreground">Settings</h2>
@@ -26,4 +26,4 @@ export function SettingsSidebar({ sections, activeSection, onSelect }: SettingsS
             </ul>
         </nav>
     );
-}
+};

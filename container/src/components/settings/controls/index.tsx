@@ -7,7 +7,12 @@ import { TextControl } from './textControl';
 import { ToggleControl } from './toggleControl';
 
 export { NumberControl, SelectControl, TextControl, ToggleControl };
-export type { BaseControlProps } from './controlTypes';
+
+export interface BaseControlProps<T> {
+    setting: Setting<T>;
+    label: string;
+    disabled?: boolean;
+}
 
 /**
  * Dispatches to the correct control based on the setting's type.
@@ -38,7 +43,16 @@ export function renderSettingControl(entry: RegisteredSetting, disabled?: boolea
         );
     }
     if (typeof setting.defaultValue === 'number') {
-        return <NumberControl key={setting.storeKey} setting={setting as Setting<number>} label={label} />;
+        return (
+            <NumberControl
+                key={setting.storeKey}
+                setting={setting as Setting<number>}
+                label={label}
+                disabled={disabled}
+            />
+        );
     }
-    return <TextControl key={setting.storeKey} setting={setting as Setting<string>} label={label} />;
+    return (
+        <TextControl key={setting.storeKey} setting={setting as Setting<string>} label={label} disabled={disabled} />
+    );
 }

@@ -15,7 +15,7 @@ function getSectionName(entry: RegisteredSetting): string {
     return entry.setting.section ?? 'General';
 }
 
-export function SettingsDialog({ isOpen, onClose }: SettingsDialogProps) {
+export const SettingsDialog = ({ isOpen, onClose }: SettingsDialogProps) => {
     const allSettings = useSettings();
 
     const sections = useMemo(() => [...new Set(allSettings.map(getSectionName))].sort(), [allSettings]);
@@ -48,4 +48,4 @@ export function SettingsDialog({ isOpen, onClose }: SettingsDialogProps) {
             </div>
         </div>
     );
-}
+};

@@ -14,7 +14,7 @@ export interface ContainerProps {
 
 const THEME_ATTRIBUTE = 'data-theme';
 
-export function Container({ instanceId = 'default' }: ContainerProps) {
+export const Container = ({ instanceId = 'default' }: ContainerProps) => {
     const stores = useMemo(() => {
         const sharedStore = new SharedStore();
         const sessionStore = new SessionStore(`container.${instanceId}.session`);
@@ -31,7 +31,7 @@ export function Container({ instanceId = 'default' }: ContainerProps) {
             <ContainerInner />
         </ContainerContext.Provider>
     );
-}
+};
 
 function ContainerInner() {
     useTheme();

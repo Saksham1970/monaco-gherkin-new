@@ -1,7 +1,7 @@
 import type { Unsubscribe } from '@/types';
 
 import type { SettingsManager } from './SettingsManager';
-import { type Setting } from './types';
+import { type Mode, type Setting } from './types';
 
 export class DarkModeManager {
     private settingsManager: SettingsManager;
@@ -57,5 +57,3 @@ export const MODES = {
     DARK: 'dark',
     BOTH: 'both',
 } as const;
-
-export type Mode = (typeof MODES)[keyof typeof MODES];

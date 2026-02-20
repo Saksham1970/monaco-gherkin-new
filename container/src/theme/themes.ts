@@ -1,4 +1,4 @@
-import { type Mode, MODES } from 'reactive-store';
+import { type Mode, MODES, type ValueOf } from 'reactive-store';
 
 export interface ThemeMetadata {
     forceDarkMode: Mode;
@@ -19,7 +19,7 @@ export const THEMES = {
     EVERFOREST: 'Everforest',
 } as const;
 
-export type ThemePalette = (typeof THEMES)[keyof typeof THEMES];
+export type ThemePalette = ValueOf<typeof THEMES>;
 
 export const THEME_METADATA: Record<ThemePalette, ThemeMetadata> = {
     [THEMES.DRACULA]: { forceDarkMode: MODES.DARK },

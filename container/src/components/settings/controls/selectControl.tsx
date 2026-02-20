@@ -1,14 +1,8 @@
-import type { Setting } from 'reactive-store';
-
 import { useSetting } from '@/hooks';
 
-interface SelectControlProps {
-    setting: Setting<string>;
-    label: string;
-    disabled?: boolean;
-}
+import type { BaseControlProps } from '.';
 
-export function SelectControl({ setting, label, disabled }: SelectControlProps) {
+export const SelectControl = ({ setting, label, disabled }: BaseControlProps<string>) => {
     const [value, setValue] = useSetting(setting);
     return (
         <div className="flex flex-col gap-2">
@@ -27,4 +21,4 @@ export function SelectControl({ setting, label, disabled }: SelectControlProps) 
             </select>
         </div>
     );
-}
+};
