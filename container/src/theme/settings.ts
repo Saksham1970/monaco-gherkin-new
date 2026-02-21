@@ -20,6 +20,6 @@ export const DARK_MODE_SETTING: Setting<boolean> = {
     section: 'Appearance',
     disabled: (manager) => {
         const theme = manager.get(THEME_SETTING) ?? THEME_SETTING.defaultValue;
-        return THEME_METADATA[theme].forceDarkMode !== MODES.BOTH;
+        return THEME_METADATA[theme].mode !== MODES.BOTH;
     },
 };

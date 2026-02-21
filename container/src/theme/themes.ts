@@ -1,7 +1,7 @@
 import { type Mode, MODES, type ValueOf } from 'reactive-store';
 
 export interface ThemeMetadata {
-    forceDarkMode: Mode;
+    mode: Mode;
 }
 
 export const THEMES = {
@@ -22,16 +22,16 @@ export const THEMES = {
 export type ThemePalette = ValueOf<typeof THEMES>;
 
 export const THEME_METADATA: Record<ThemePalette, ThemeMetadata> = {
-    [THEMES.DRACULA]: { forceDarkMode: MODES.DARK },
-    [THEMES.MONOKAI]: { forceDarkMode: MODES.DARK },
-    [THEMES.NORD]: { forceDarkMode: MODES.BOTH },
-    [THEMES.SOLARIZED]: { forceDarkMode: MODES.BOTH },
-    [THEMES.CATPPUCCIN]: { forceDarkMode: MODES.BOTH },
-    [THEMES.GRUVBOX]: { forceDarkMode: MODES.BOTH },
-    [THEMES.TOKYO_NIGHT]: { forceDarkMode: MODES.BOTH },
-    [THEMES.GITHUB]: { forceDarkMode: MODES.BOTH },
-    [THEMES.MATERIAL]: { forceDarkMode: MODES.BOTH },
-    [THEMES.ONE]: { forceDarkMode: MODES.BOTH },
-    [THEMES.ROSE_PINE]: { forceDarkMode: MODES.BOTH },
-    [THEMES.EVERFOREST]: { forceDarkMode: MODES.BOTH },
+    [THEMES.DRACULA]: { mode: MODES.DARK },
+    [THEMES.MONOKAI]: { mode: MODES.DARK },
+    [THEMES.NORD]: { mode: MODES.BOTH },
+    [THEMES.SOLARIZED]: { mode: MODES.BOTH },
+    [THEMES.CATPPUCCIN]: { mode: MODES.BOTH },
+    [THEMES.GRUVBOX]: { mode: MODES.BOTH },
+    [THEMES.TOKYO_NIGHT]: { mode: MODES.BOTH },
+    [THEMES.GITHUB]: { mode: MODES.BOTH },
+    [THEMES.MATERIAL]: { mode: MODES.BOTH },
+    [THEMES.ONE]: { mode: MODES.BOTH },
+    [THEMES.ROSE_PINE]: { mode: MODES.BOTH },
+    [THEMES.EVERFOREST]: { mode: MODES.BOTH },
 };
